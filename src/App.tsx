@@ -1,23 +1,29 @@
-import { ReactElement } from "react";
-import logo from "./logo.svg";
+import { ReactElement, useEffect, useState } from "react";
+import RickAndMortyApi from "./services/api.service";
+import { ReactComponent as Logo } from "./logo.svg";
 import "./App.css";
+import { IRickAndMortyData } from "./models/api.interface";
 
 function App(): ReactElement {
+  const [apiData, setApiData] = useState<IRickAndMortyData | undefined>(
+    undefined
+  );
+
+  const getAllCharacters = (): void => {
+    RickAndMortyApi.getAllCharacters().then(
+      (response: IRickAndMortyData | undefined) => {
+        setApiData(response);
+      }
+    );
+  };
+
+  useEffect(() => {
+    getAllCharacters();
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Logo />
       </header>
     </div>
   );
