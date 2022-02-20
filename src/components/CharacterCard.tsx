@@ -10,29 +10,39 @@ function CharacterCard({
   character,
   onSelect,
 }: CharacterCardProps): ReactElement {
+  const statusColors = (): string => {
+    switch (character.status) {
+      case "Alive":
+        return "bg-green-200 text-green-700";
+      case "Dead":
+        return "bg-red-200 text-red-700";
+      default:
+        return "bg-gray-200 text-gray-700";
+    }
+  };
+
   return (
     <div
       onClick={() => onSelect(character)}
-      className="rounded-md overflow-hidden shadow-lg border-2 border-white hover:border-green-700 cursor-pointer"
+      className="rounded-md overflow-hidden shadow-lg border-2 hover:border-green-700 cursor-pointer"
       role="button"
     >
       <div
         className="w-full bg-cover bg-center bg-no-repeat h-80"
         style={{ backgroundImage: `url('${character.image}')` }}
       />
-      <div className="px-6 py-3">
-        <div className="font-bold text-2xl">{character.name}</div>
-      </div>
-      <div className="px-6 pb-3">
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #photography
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #travel
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #winter
-        </span>
+      <div className="px-6 pt-3 pb-6">
+        <div className="font-bold text-3xl">{character.name}</div>
+        <div className="flex space-x-2 pt-2">
+          <div
+            className={`text-xs items-center font-bold uppercase px-3 py-1 ${statusColors()} rounded-full`}
+          >
+            {character.status}
+          </div>
+          <div className="text-xs items-center font-bold uppercase py-1 rounded-full">
+            {character.location.name}
+          </div>
+        </div>
       </div>
     </div>
   );
