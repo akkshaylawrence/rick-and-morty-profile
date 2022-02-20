@@ -3,19 +3,32 @@ import { IFilter } from "../models/api.interface";
 import { Input, Button } from "./common";
 
 type SearchBarProps = {
-  handleFilterChange?: (filter: IFilter) => void;
+  handleFilterChange: (filter: IFilter) => void;
+  onSearch?: () => void;
 };
 
 const defaultProps = {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  handleFilterChange: () => {},
+  onSearch: () => {
+    // do nothing.
+  },
 };
 
-function SearchBar({ handleFilterChange }: SearchBarProps): ReactElement {
+function SearchBar({
+  handleFilterChange,
+  onSearch,
+}: SearchBarProps): ReactElement {
+  const onSearchQueryChage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    handleFilterChange({
+      name: event.target.value,
+    });
+  };
+
   return (
     <div className="w-full flex border rounded-md p-10 my-5 space-x-3">
-      <Input />
-      <Button />
+      <Input onChange={onSearchQueryChage} />
+      <Button onClick={onSearch} />
     </div>
   );
 }

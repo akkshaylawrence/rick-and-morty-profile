@@ -7,6 +7,7 @@ function App(): ReactElement {
   const [apiData, setApiData] = useState<IRickAndMortyData | undefined>(
     undefined
   );
+
   const [searchFilter, setSearchFilter] = useState({
     page: 1,
   });
@@ -17,7 +18,8 @@ function App(): ReactElement {
     );
   }, [searchFilter]);
 
-  useEffect(() => getAllCharacters(), [getAllCharacters]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => getAllCharacters(), []);
 
   const handleFilterChange = (filter: IFilter): void =>
     setSearchFilter(prevValue => ({ ...prevValue, ...filter }));
@@ -25,8 +27,11 @@ function App(): ReactElement {
   return (
     <div className="m-auto max-w-screen-xl p-3">
       <Header />
-      <SearchBar handleFilterChange={handleFilterChange} />
-      <Content />
+      <SearchBar
+        handleFilterChange={handleFilterChange}
+        onSearch={getAllCharacters}
+      />
+      <Content content={apiData} />
     </div>
   );
 }
