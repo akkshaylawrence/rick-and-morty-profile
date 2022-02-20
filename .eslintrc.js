@@ -17,7 +17,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "react-hooks", "@typescript-eslint"],
+  plugins: ["react", "react-hooks", "@typescript-eslint", "unused-imports"],
   settings: {
     "import/resolver": {
       typescript: {},
@@ -47,5 +47,8 @@ module.exports = {
     "react/prop-types": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/interactive-supports-focus": "off",
+    "unused-imports/no-unused-imports": "error",
   },
 };

@@ -3,11 +3,19 @@ import { ICharacter } from "../models/api.interface";
 
 type CharacterCardProps = {
   character: ICharacter;
+  onSelect: (character: ICharacter) => void;
 };
 
-function CharacterCard({ character }: CharacterCardProps): ReactElement {
+function CharacterCard({
+  character,
+  onSelect,
+}: CharacterCardProps): ReactElement {
   return (
-    <div className="max-w-sm rounded-md overflow-hidden shadow-lg border-2 border-white hover:border-green-700">
+    <div
+      onClick={() => onSelect(character)}
+      className="rounded-md overflow-hidden shadow-lg border-2 border-white hover:border-green-700 cursor-pointer"
+      role="button"
+    >
       <div
         className="w-full bg-cover bg-center bg-no-repeat h-80"
         style={{ backgroundImage: `url('${character.image}')` }}

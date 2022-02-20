@@ -23,7 +23,7 @@ function SearchBar({
   };
 
   return (
-    <div className="w-full flex rounded-md py-5 mt-5 space-x-3">
+    <div className="w-full flex rounded-md py-5 space-x-3">
       <Input onChange={onSearchQueryChage} />
       <Button onClick={onSearch} />
     </div>
