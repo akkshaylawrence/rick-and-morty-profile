@@ -15,7 +15,7 @@ function Button({ onClick }: ButtonProps): ReactElement {
     <button
       type="button"
       onClick={onClick}
-      className="bg-green-500 hover:bg-green-600 focus:outline-none hover:ring hover:ring-green-300 active:bg-green-700 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white"
+      className="bg-green-500 hover:bg-green-600 focus:outline-none hover:ring hover:ring-green-300 active:bg-green-700 px-5 py-2 text-sm leading-5 rounded-md font-semibold text-white"
     >
       Search
     </button>

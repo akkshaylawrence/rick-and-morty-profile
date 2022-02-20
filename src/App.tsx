@@ -25,7 +25,7 @@ function App(): ReactElement {
     setSearchFilter(prevValue => ({ ...prevValue, ...filter }));
 
   return (
-    <div className="m-auto max-w-screen-xl p-3">
+    <div className="m-auto h-screen max-w-screen-xl p-3 overflow-hidden">
       <Header />
       <SearchBar
         handleFilterChange={handleFilterChange}
