@@ -1,4 +1,5 @@
-import { ReactElement } from "react";
+import { ChangeEvent, ReactElement } from "react";
+import { noop } from "../constants";
 import { IFilter } from "../models/api.interface";
 import { Input, Button } from "./common";
 
@@ -8,25 +9,21 @@ type SearchBarProps = {
 };
 
 const defaultProps = {
-  onSearch: () => {
-    // do nothing.
-  },
+  onSearch: noop,
 };
 
 function SearchBar({
   handleFilterChange,
   onSearch,
 }: SearchBarProps): ReactElement {
-  const onSearchQueryChage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const onSearchQueryChage = (event: ChangeEvent<HTMLInputElement>): void => {
     handleFilterChange({
       name: event.target.value,
     });
   };
 
   return (
-    <div className="w-full flex rounded-md px-10 py-5 mt-5 space-x-3">
+    <div className="w-full flex rounded-md py-5 mt-5 space-x-3">
       <Input onChange={onSearchQueryChage} />
       <Button onClick={onSearch} />
     </div>

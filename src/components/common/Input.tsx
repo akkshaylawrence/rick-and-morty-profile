@@ -1,16 +1,19 @@
 import { ReactElement } from "react";
+import { noop } from "../../constants";
 
 type InputProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const defaultProps = {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-    // do nothing.
-  },
+  onChange: noop,
 };
 
 function Input({ onChange }: InputProps): ReactElement {
+  const inputClasses =
+    "placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md " +
+    "py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:border-green-600 focus:ring-green-600 focus:ring-1 sm:text-sm";
+
   return (
     <label htmlFor="name" className="relative block flex-grow">
       <span className="sr-only">Search</span>
@@ -25,7 +28,7 @@ function Input({ onChange }: InputProps): ReactElement {
       </span>
       <input
         onChange={onChange}
-        className="placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-500 focus:ring-1 sm:text-sm"
+        className={inputClasses}
         placeholder="Search for your character..."
         type="text"
         name="search"

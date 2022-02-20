@@ -7,7 +7,7 @@ type CharacterCardProps = {
 
 function CharacterCard({ character }: CharacterCardProps): ReactElement {
   return (
-    <div className="max-w-sm rounded-md overflow-hidden shadow-lg hover:border-purple-500">
+    <div className="max-w-sm rounded-md overflow-hidden shadow-lg border-2 hover:border-green-700">
       <div
         className="w-full bg-cover bg-center bg-no-repeat h-80"
         style={{ backgroundImage: `url('${character.image}')` }}
