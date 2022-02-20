@@ -18,12 +18,18 @@ export interface ICharacter {
   created: string;
 }
 
+export interface IInfo {
+  count: number;
+  pages: number;
+  next: string;
+  prev: string;
+}
+
 export interface IRickAndMortyData {
-  info: {
-    count: number;
-    pages: number;
-    next: string;
-    prev: string;
-  };
+  info: IInfo;
   results: Array<ICharacter>;
+}
+
+export interface IFilter {
+  [key: string]: string | number;
 }

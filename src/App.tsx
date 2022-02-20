@@ -1,30 +1,32 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import RickAndMortyApi from "./services/api.service";
-import { ReactComponent as Logo } from "./logo.svg";
-import "./App.css";
-import { IRickAndMortyData } from "./models/api.interface";
+import { IFilter, IRickAndMortyData } from "./models/api.interface";
+import { Header, SearchBar, Content } from "./components";
 
 function App(): ReactElement {
   const [apiData, setApiData] = useState<IRickAndMortyData | undefined>(
     undefined
   );
+  const [searchFilter, setSearchFilter] = useState({
+    page: 1,
+  });
 
-  const getAllCharacters = (): void => {
-    RickAndMortyApi.getAllCharacters().then(
-      (response: IRickAndMortyData | undefined) => {
-        setApiData(response);
-      }
+  const getAllCharacters = useCallback((): void => {
+    RickAndMortyApi.getAllCharacters(searchFilter).then(
+      (response: IRickAndMortyData | undefined) => setApiData(response)
     );
-  };
+  }, [searchFilter]);
 
-  useEffect(() => {
-    getAllCharacters();
-  }, []);
+  useEffect(() => getAllCharacters(), [getAllCharacters]);
+
+  const handleFilterChange = (filter: IFilter): void =>
+    setSearchFilter(prevValue => ({ ...prevValue, ...filter }));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <Logo />
-      </header>
+    <div className="m-auto max-w-screen-xl p-3">
+      <Header />
+      <SearchBar handleFilterChange={handleFilterChange} />
+      <Content />
     </div>
   );
 }
