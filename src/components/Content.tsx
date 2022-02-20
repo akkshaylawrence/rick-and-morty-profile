@@ -12,10 +12,15 @@ const defaultProps = {
 
 function Content({ content }: ContentProps): ReactElement {
   return (
-    <div className="w-full justify-center border-2 rounded-md p-10 my-5 grid grid-cols-3 gap-2">
-      {content?.results?.map(character => (
-        <CharacterCard key={character.id} character={character} />
-      ))}
+    <div
+      style={{ height: "calc(100vh - 220px)" }}
+      className="w-full overflow-y-scroll justify-center border-2 rounded-md p-10 my-5"
+    >
+      <div className="grid grid-cols-3 gap-5">
+        {content?.results?.map(character => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </div>
     </div>
   );
 }

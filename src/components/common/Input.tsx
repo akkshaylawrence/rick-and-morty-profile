@@ -11,14 +11,15 @@ const defaultProps = {
 
 function Input({ onChange }: InputProps): ReactElement {
   const inputClasses =
-    "placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md " +
-    "py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:border-green-600 focus:ring-green-600 focus:ring-1 sm:text-sm";
+    "placeholder:text-slate-400 placeholder:text-base " +
+    "block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm " +
+    "focus:outline-none focus:border-green-700 focus:ring-green-600 focus:ring-1";
 
   return (
-    <label htmlFor="name" className="relative block flex-grow">
+    <label htmlFor="name" className="relative block flex-grow group">
       <span className="sr-only">Search</span>
       <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-        <svg className="h-5 w-5 fill-slate-300" viewBox="0 0 20 20">
+        <svg className="h-5 w-5 fill-slate-400 " viewBox="0 0 20 20">
           <path
             fillRule="evenodd"
             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
