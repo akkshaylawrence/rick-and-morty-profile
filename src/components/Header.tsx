@@ -9,7 +9,7 @@ const defaultProps = {
 
 function Header({ title }: HeaderProps): ReactElement {
   return (
-    <header className="flex items-center space-x-3 mt-5">
+    <header className="flex items-center space-x-3">
       <Logo />
       <span className="text-3xl font-semibold">{title}</span>
     </header>

@@ -32,11 +32,13 @@ function App(): ReactElement {
 
   return (
     <div className="m-auto h-screen max-w-screen-xl p-3 overflow-hidden">
-      <Header />
-      <SearchBar
-        handleFilterChange={handleFilterChange}
-        onSearch={getAllCharacters}
-      />
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+        <Header />
+        <SearchBar
+          handleFilterChange={handleFilterChange}
+          onSearch={getAllCharacters}
+        />
+      </div>
       <Content
         content={apiData}
         currentPage={searchFilter.page}

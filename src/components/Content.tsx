@@ -37,7 +37,7 @@ function Content({
         style={{ height: "calc(100vh - 250px)" }}
         className="w-full overflow-y-scroll justify-center border-2 rounded-md p-10"
       >
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-5">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
           {content?.results?.map(character => (
             <CharacterCard
               key={character.id}
