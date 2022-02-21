@@ -1,5 +1,5 @@
 import { ChangeEvent, ReactElement } from "react";
-import { noop } from "../constants";
+import { noop } from "./constants";
 import { IFilter } from "../models/api.interface";
 import { Input, Button } from "./common";
 

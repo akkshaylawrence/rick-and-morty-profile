@@ -1,5 +1,7 @@
 import { ReactElement } from "react";
 import { ICharacter } from "../../models/api.interface";
+import { statusColors } from "../helpers";
+import Tag from "./Tag";
 
 type ModalProps = {
   character: ICharacter | undefined;
@@ -30,10 +32,10 @@ function Modal({ character, showModal, onClose }: ModalProps): ReactElement {
   return showModal ? (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
-        <div className="relative w-auto my-6 mx-auto max-w-3xl">
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white">
-            <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-              <div className="flex space-x-5 items-center">
+        <div className="w-auto my-6 mx-auto max-w-3xl">
+          <div className="border-0 rounded-lg shadow-lg flex flex-col w-screen md:w-128 bg-white">
+            <div className="flex items-center justify-between py-3 px-5 border-b border-solid border-blueGray-200 rounded-t">
+              <div className="flex space-x-2 items-center">
                 <h3 className="text-3xl font-bold">{character?.name}</h3>
               </div>
               <button
@@ -46,12 +48,32 @@ function Modal({ character, showModal, onClose }: ModalProps): ReactElement {
                 </span>
               </button>
             </div>
-            <div className="relative p-6">
-              <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                I always felt like I could do anything. Thats the main thing
-                people are controlled by! Thoughts- their perception of
-                themselves!
-              </p>
+            <div className="relative flex space-x-2">
+              <div
+                className="w-1/2 bg-cover bg-center rounded-bl-md bg-no-repeat h-80"
+                style={{ backgroundImage: `url('${character?.image}')` }}
+              />
+              <div className="flex flex-col w-1/2">
+                <div className="flex space-x-2 items-center px-3 pt-2">
+                  <div className="font-bold">Status: </div>
+                  <Tag
+                    text={character?.status || "Unknown"}
+                    className={statusColors(character?.status || "Unknown")}
+                  />
+                </div>
+                <div className="px-3 pt-2">
+                  <div className="font-bold">Last known location: </div>
+                  {character?.location?.name || "Unknown"}
+                </div>
+                <div className="px-3 pt-2">
+                  <div className="font-bold">Species: </div>
+                  {character?.species || "Unknown"}
+                </div>
+                <div className="px-3 pt-2">
+                  <div className="font-bold">Gender: </div>
+                  {character?.gender || "Unknown"}
+                </div>
+              </div>
             </div>
           </div>
         </div>

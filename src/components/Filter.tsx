@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { GENDER_OPTIONS, STATUS_OPTIONS } from "../constants";
+import { GENDER_OPTIONS, STATUS_OPTIONS } from "./constants";
 import { IFilter } from "../models/api.interface";
 import { Dropdown } from "./common";
 

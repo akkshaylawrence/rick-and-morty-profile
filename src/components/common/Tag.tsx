@@ -1,4 +1,4 @@
-import { memo, ReactElement } from "react";
+import { ReactElement } from "react";
 
 type TagProps = {
   text: string;
@@ -12,7 +12,7 @@ const defaultProps = {
 function Tag({ text, className }: TagProps): ReactElement {
   return (
     <div
-      className={`text-xs items-center font-bold uppercase px-3 py-1 rounded-full ${className} `}
+      className={`text-xs h-6 items-center font-bold uppercase px-3 py-1 rounded-full ${className} `}
     >
       {text}
     </div>
@@ -21,4 +21,4 @@ function Tag({ text, className }: TagProps): ReactElement {
 
 Tag.defaultProps = defaultProps;
 
-export default memo(Tag);
+export default Tag;

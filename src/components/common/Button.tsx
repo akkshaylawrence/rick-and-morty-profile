@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { noop } from "../../constants";
+import { noop } from "../constants";
 
 type ButtonProps = {
   onClick?: () => void;
