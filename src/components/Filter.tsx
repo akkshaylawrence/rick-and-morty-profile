@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { STATUS_OPTIONS } from "../constants";
+import { GENDER_OPTIONS, STATUS_OPTIONS } from "../constants";
 import { IFilter } from "../models/api.interface";
 import { Dropdown } from "./common";
 
@@ -13,15 +13,25 @@ function Filter({
   currentFilter,
 }: FilterBarProps): ReactElement {
   return (
-    <div className="flex items-center justify-center space-x-3 p-2 border-2 rounded-md mb-2">
-      <div className="flex items-center space-x-3 px-3">
+    <div className="flex items-center justify-center p-2 border-2 rounded-md mb-2">
+      <div className="flex items-center space-x-2 px-3">
         <span className="font-bold text-gray-800">Status: </span>
         <Dropdown
           onChange={handleFilterChange}
-          label={`${currentFilter.status}` || "All"}
+          label={currentFilter.status ? `${currentFilter.status}` : "All"}
           options={STATUS_OPTIONS}
           value={currentFilter.status || "All"}
           filterKey="status"
+        />
+      </div>
+      <div className="flex items-center space-x-3 px-3">
+        <span className="font-bold text-gray-800">Gender: </span>
+        <Dropdown
+          onChange={handleFilterChange}
+          label={currentFilter.gender ? `${currentFilter.gender}` : "All"}
+          options={GENDER_OPTIONS}
+          value={currentFilter.gender || "All"}
+          filterKey="gender"
         />
       </div>
     </div>

@@ -20,3 +20,26 @@ export const STATUS_OPTIONS = [
     value: "unknown",
   },
 ];
+
+export const GENDER_OPTIONS = [
+  {
+    label: "All",
+    value: "",
+  },
+  {
+    label: "Female",
+    value: "female",
+  },
+  {
+    label: "Male",
+    value: "male",
+  },
+  {
+    label: "Genderless",
+    value: "genderless",
+  },
+  {
+    label: "Unknown",
+    value: "unknown",
+  },
+];

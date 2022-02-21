@@ -12,7 +12,6 @@ function App(): ReactElement {
   const [searchFilter, setSearchFilter] = useState({
     page: 1,
   });
-  console.log("App : searchFilter", searchFilter);
 
   const getAllCharacters = useCallback((): void => {
     RickAndMortyApi.getAllCharacters(searchFilter).then(
