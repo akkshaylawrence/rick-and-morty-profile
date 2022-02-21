@@ -1,20 +1,18 @@
-import { ReactElement } from "react";
+import { memo, ReactElement } from "react";
 
 type TagProps = {
   text: string;
-  color?: string;
+  className?: string;
 };
 
 const defaultProps = {
-  color: "blue",
+  className: "bg-gray-200 text-gray-700",
 };
 
-function Tag({ text, color }: TagProps): ReactElement {
-  const tagColor = `bg-${color}-200 text-${color}-700`;
-
+function Tag({ text, className }: TagProps): ReactElement {
   return (
     <div
-      className={`text-xs items-center font-bold uppercase px-3 py-1 ${tagColor} rounded-full`}
+      className={`text-xs items-center font-bold uppercase px-3 py-1 rounded-full ${className} `}
     >
       {text}
     </div>
@@ -23,4 +21,4 @@ function Tag({ text, color }: TagProps): ReactElement {
 
 Tag.defaultProps = defaultProps;
 
-export default Tag;
+export default memo(Tag);

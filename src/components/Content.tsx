@@ -34,7 +34,7 @@ function Content({
     <div className="flex flex-col items-center space-y-3">
       <div
         style={{ height: "calc(100vh - 270px)" }}
-        className="w-full overflow-y-scroll justify-center border-2 rounded-md p-10"
+        className="w-full bg-gray-50 shadow-inner overflow-y-scroll justify-center rounded-md p-5 md:p-7 lg:p-10"
       >
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
           {content?.results?.map(character => (

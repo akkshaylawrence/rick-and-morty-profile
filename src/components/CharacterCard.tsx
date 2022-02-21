@@ -11,21 +11,21 @@ function CharacterCard({
   character,
   onSelect,
 }: CharacterCardProps): ReactElement {
-  const statusColors = (): string => {
-    switch (character.status) {
+  const statusColors = (status: string): string => {
+    switch (status) {
       case "Alive":
-        return "green";
+        return "bg-green-200 text-green-700";
       case "Dead":
-        return "red";
+        return "bg-red-200 text-red-700";
       default:
-        return "gray";
+        return "bg-gray-200 text-gray-700";
     }
   };
 
   return (
     <div
       onClick={() => onSelect(character)}
-      className="rounded-md overflow-hidden shadow-lg border-2 hover:border-green-700 cursor-pointer"
+      className="rounded-md overflow-hidden shadow-md bg-white border-2 hover:border-green-700 cursor-pointer"
       role="button"
     >
       <div
@@ -35,7 +35,10 @@ function CharacterCard({
       <div className="px-6 pt-3 pb-6">
         <div className="font-bold text-3xl">{character.name}</div>
         <div className="flex space-x-2 pt-2">
-          <Tag text={character.status} color={statusColors()} />
+          <Tag
+            text={character.status}
+            className={statusColors(character.status)}
+          />
           <div className="text-xs items-center font-bold uppercase py-1 rounded-full">
             {character.location.name}
           </div>
