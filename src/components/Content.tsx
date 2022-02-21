@@ -33,7 +33,7 @@ function Content({
   return (
     <div className="flex flex-col items-center space-y-3">
       <div
-        style={{ height: "calc(100vh - 250px)" }}
+        style={{ height: "calc(100vh - 270px)" }}
         className="w-full overflow-y-scroll justify-center border-2 rounded-md p-10"
       >
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">

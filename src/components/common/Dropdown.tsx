@@ -35,9 +35,9 @@ function Dropdown({
       <button
         type="button"
         onClick={() => setIsOpen(prev => !prev)}
-        className="bg-gray-100 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center"
+        className="bg-gray-100 text-gray-700 font-semibold py-2 h-9 px-4 rounded inline-flex items-center"
       >
-        <span className="mr-1 uppercase">{label}</span>
+        <span className="mr-1 text-sm uppercase">{label}</span>
         <svg
           className="fill-current h-4 w-4"
           xmlns="http://www.w3.org/2000/svg"

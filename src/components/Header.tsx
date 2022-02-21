@@ -11,7 +11,7 @@ function Header({ title }: HeaderProps): ReactElement {
   return (
     <header className="flex items-center space-x-3">
       <Logo />
-      <span className="text-3xl font-semibold">{title}</span>
+      <span className="text-3xl sm:hidden md:block font-semibold">{title}</span>
     </header>
   );
 }

@@ -32,18 +32,20 @@ function App(): ReactElement {
   };
 
   return (
-    <div className="m-auto h-screen max-w-screen-xl p-3 grid grid-cols-1 overflow-hidden">
-      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 h-20">
-        <Header />
-        <SearchBar
+    <div className="m-auto h-screen max-w-screen-xl p-3 overflow-hidden">
+      <div className="flex flex-col mb-3 md:space-y-5 sm:space-y-9">
+        <div className="flex flex-nowrap space-x-5 justify-between h-20 mb-1">
+          <Header />
+          <SearchBar
+            handleFilterChange={handleFilterChange}
+            onSearch={getAllCharacters}
+          />
+        </div>
+        <Filter
           handleFilterChange={handleFilterChange}
-          onSearch={getAllCharacters}
+          currentFilter={searchFilter}
         />
       </div>
-      <Filter
-        handleFilterChange={handleFilterChange}
-        currentFilter={searchFilter}
-      />
       <Content
         content={apiData}
         currentPage={searchFilter.page}
