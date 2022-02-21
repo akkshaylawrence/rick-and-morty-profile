@@ -1,8 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { ICharacter, IRickAndMortyData } from "../models/api.interface";
 import CharacterCard from "./CharacterCard";
-import Modal from "./common/Modal";
-import Pagination from "./common/Pagination";
+import { Modal, Pagination } from "./common";
 
 type ContentProps = {
   content: IRickAndMortyData | undefined;

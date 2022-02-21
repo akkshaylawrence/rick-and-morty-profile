@@ -18,8 +18,8 @@ function Pagination({
   startPage = startPage === 0 ? 1 : startPage;
 
   const buttonClasses =
-    "py-1 px-3 w-30 text-gray-500 border border-gray-300 hover:bg-gray-100 disabled:bg-gray-100 " +
-    "disabled:cursor-not-allowed hover:text-gray-700";
+    "py-1 -mt-1 px-3 w-30 text-gray-500 font-bold border border-gray-300 hover:bg-gray-100 disabled:bg-gray-100 " +
+    "disabled:cursor-not-allowed disabled:text-gray-300 hover:text-gray-700";
 
   return (
     <>

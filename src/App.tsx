@@ -2,6 +2,7 @@ import { ReactElement, useCallback, useEffect, useState } from "react";
 import RickAndMortyApi from "./services/api.service";
 import { IFilter, IRickAndMortyData } from "./models/api.interface";
 import { Header, SearchBar, Content } from "./components";
+import Filter from "./components/Filter";
 
 function App(): ReactElement {
   const [apiData, setApiData] = useState<IRickAndMortyData | undefined>(
@@ -11,6 +12,7 @@ function App(): ReactElement {
   const [searchFilter, setSearchFilter] = useState({
     page: 1,
   });
+  console.log("App : searchFilter", searchFilter);
 
   const getAllCharacters = useCallback((): void => {
     RickAndMortyApi.getAllCharacters(searchFilter).then(
@@ -31,14 +33,18 @@ function App(): ReactElement {
   };
 
   return (
-    <div className="m-auto h-screen max-w-screen-xl p-3 overflow-hidden">
-      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
+    <div className="m-auto h-screen max-w-screen-xl p-3 grid grid-cols-1 overflow-hidden">
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 h-20">
         <Header />
         <SearchBar
           handleFilterChange={handleFilterChange}
           onSearch={getAllCharacters}
         />
       </div>
+      <Filter
+        handleFilterChange={handleFilterChange}
+        currentFilter={searchFilter}
+      />
       <Content
         content={apiData}
         currentPage={searchFilter.page}

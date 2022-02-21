@@ -1,5 +1,4 @@
-import { ReactElement, useRef } from "react";
-import useOnClickOutside from "../../hooks/useOnClickOutside";
+import { ReactElement } from "react";
 import { ICharacter } from "../../models/api.interface";
 
 type ModalProps = {
@@ -28,16 +27,9 @@ function CloseIcon(): ReactElement {
 }
 
 function Modal({ character, showModal, onClose }: ModalProps): ReactElement {
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  useOnClickOutside(modalRef, () => onClose());
-
   return showModal ? (
     <>
-      <div
-        ref={modalRef}
-        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50"
-      >
+      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
         <div className="relative w-auto my-6 mx-auto max-w-3xl">
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white">
             <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
