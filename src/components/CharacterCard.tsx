@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { ICharacter } from "../models/api.interface";
+import { Tag } from "./common";
 
 type CharacterCardProps = {
   character: ICharacter;
@@ -13,11 +14,11 @@ function CharacterCard({
   const statusColors = (): string => {
     switch (character.status) {
       case "Alive":
-        return "bg-green-200 text-green-700";
+        return "green";
       case "Dead":
-        return "bg-red-200 text-red-700";
+        return "red";
       default:
-        return "bg-gray-200 text-gray-700";
+        return "gray";
     }
   };
 
@@ -34,11 +35,7 @@ function CharacterCard({
       <div className="px-6 pt-3 pb-6">
         <div className="font-bold text-3xl">{character.name}</div>
         <div className="flex space-x-2 pt-2">
-          <div
-            className={`text-xs items-center font-bold uppercase px-3 py-1 ${statusColors()} rounded-full`}
-          >
-            {character.status}
-          </div>
+          <Tag text={character.status} color={statusColors()} />
           <div className="text-xs items-center font-bold uppercase py-1 rounded-full">
             {character.location.name}
           </div>
