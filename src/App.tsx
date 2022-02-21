@@ -19,10 +19,16 @@ function App(): ReactElement {
   }, [searchFilter]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => getAllCharacters(), []);
+  useEffect(() => getAllCharacters(), [searchFilter]);
 
   const handleFilterChange = (filter: IFilter): void =>
     setSearchFilter(prevValue => ({ ...prevValue, ...filter }));
+
+  const handlePageChange = (direction: string): void => {
+    const { page } = searchFilter;
+    const newPage = direction === "next" ? page + 1 : page - 1;
+    setSearchFilter(prevValue => ({ ...prevValue, page: newPage }));
+  };
 
   return (
     <div className="m-auto h-screen max-w-screen-xl p-3 overflow-hidden">
@@ -31,7 +37,11 @@ function App(): ReactElement {
         handleFilterChange={handleFilterChange}
         onSearch={getAllCharacters}
       />
-      <Content content={apiData} />
+      <Content
+        content={apiData}
+        currentPage={searchFilter.page}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

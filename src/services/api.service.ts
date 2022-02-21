@@ -9,7 +9,7 @@ import {
 
 const getFilterApiUrl = (filter: IFilter): string => {
   const query = filter ? `&${QueryString.stringify(filter)}` : "";
-  return `character/?page=${filter.page}${query}`;
+  return `character/?${query}`;
 };
 
 const getAllCharacters = async (
