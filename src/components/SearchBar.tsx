@@ -1,21 +1,12 @@
 import { ChangeEvent, ReactElement } from "react";
-import { noop } from "./constants";
 import { IFilter } from "../models/api.interface";
-import { Input, Button } from "./common";
+import { Input } from "./common";
 
 type SearchBarProps = {
   handleFilterChange: (filter: IFilter) => void;
-  onSearch?: () => void;
 };
 
-const defaultProps = {
-  onSearch: noop,
-};
-
-function SearchBar({
-  handleFilterChange,
-  onSearch,
-}: SearchBarProps): ReactElement {
+function SearchBar({ handleFilterChange }: SearchBarProps): ReactElement {
   const onSearchQueryChage = (event: ChangeEvent<HTMLInputElement>): void => {
     handleFilterChange({
       name: event.target.value,
@@ -25,11 +16,8 @@ function SearchBar({
   return (
     <div className="flex flex-grow rounded-md py-5 space-x-3">
       <Input onChange={onSearchQueryChage} />
-      <Button onClick={onSearch} />
     </div>
   );
 }
-
-SearchBar.defaultProps = defaultProps;
 
 export default SearchBar;

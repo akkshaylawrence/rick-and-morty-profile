@@ -33,7 +33,7 @@ function Modal({ character, showModal, onClose }: ModalProps): ReactElement {
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50">
         <div className="w-auto my-6 mx-auto max-w-3xl">
-          <div className="border-0 rounded-lg shadow-lg flex flex-col w-screen md:w-128 bg-white">
+          <div className="border-0 rounded-none md:rounded-lg shadow-lg flex flex-col w-screen md:w-128 bg-white">
             <div className="flex items-center justify-between py-3 px-5 border-b border-solid border-blueGray-200 rounded-t">
               <div className="flex space-x-2 items-center">
                 <h3 className="text-3xl font-bold">{character?.name}</h3>
@@ -50,10 +50,10 @@ function Modal({ character, showModal, onClose }: ModalProps): ReactElement {
             </div>
             <div className="relative flex space-x-2">
               <div
-                className="w-1/2 bg-cover bg-center rounded-bl-md bg-no-repeat"
+                className="w-1/2 bg-cover bg-center rounded-none md:rounded-bl-md bg-no-repeat"
                 style={{ backgroundImage: `url('${character?.image}')` }}
               />
-              <div className="flex flex-col w-1/2 py-3 pl-1">
+              <div className="flex flex-col w-1/2 py-6 pl-1">
                 <div className="flex space-x-2 items-center px-3">
                   <div className="font-bold">Status: </div>
                   <Tag

@@ -36,7 +36,7 @@ function App(): ReactElement {
     );
   };
 
-  useEffect(() => getAllCharacters(), []);
+  useEffect(() => getAllCharacters(), [searchFilter]);
 
   useEffect(() => {
     const episodes = characterData?.results.map(
@@ -58,10 +58,7 @@ function App(): ReactElement {
       <div className="flex flex-col mb-3 md:space-y-5 sm:space-y-9">
         <div className="flex flex-nowrap space-x-5 justify-between h-20 mb-1">
           <Header />
-          <SearchBar
-            handleFilterChange={handleFilterChange}
-            onSearch={getAllCharacters}
-          />
+          <SearchBar handleFilterChange={handleFilterChange} />
         </div>
         <Filter
           handleFilterChange={handleFilterChange}
