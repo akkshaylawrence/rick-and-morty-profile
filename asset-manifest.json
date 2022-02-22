@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rick-and-morty-profle/static/css/main.1f654584.css",
-    "main.js": "/rick-and-morty-profle/static/js/main.8e13a1a8.js",
+    "main.css": "/rick-and-morty-profle/static/css/main.192fdb4c.css",
+    "main.js": "/rick-and-morty-profle/static/js/main.f4d687e6.js",
     "static/js/787.5f4e5999.chunk.js": "/rick-and-morty-profle/static/js/787.5f4e5999.chunk.js",
     "static/media/logo.svg": "/rick-and-morty-profle/static/media/logo.18c13ff8330f98b1beacab75516c4c4a.svg",
     "index.html": "/rick-and-morty-profle/index.html",
-    "main.1f654584.css.map": "/rick-and-morty-profle/static/css/main.1f654584.css.map",
-    "main.8e13a1a8.js.map": "/rick-and-morty-profle/static/js/main.8e13a1a8.js.map",
+    "main.192fdb4c.css.map": "/rick-and-morty-profle/static/css/main.192fdb4c.css.map",
+    "main.f4d687e6.js.map": "/rick-and-morty-profle/static/js/main.f4d687e6.js.map",
     "787.5f4e5999.chunk.js.map": "/rick-and-morty-profle/static/js/787.5f4e5999.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1f654584.css",
-    "static/js/main.8e13a1a8.js"
+    "static/css/main.192fdb4c.css",
+    "static/js/main.f4d687e6.js"
   ]
 }
