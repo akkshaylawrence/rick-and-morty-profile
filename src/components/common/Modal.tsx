@@ -50,11 +50,11 @@ function Modal({ character, showModal, onClose }: ModalProps): ReactElement {
             </div>
             <div className="relative flex space-x-2">
               <div
-                className="w-1/2 bg-cover bg-center rounded-bl-md bg-no-repeat h-80"
+                className="w-1/2 bg-cover bg-center rounded-bl-md bg-no-repeat"
                 style={{ backgroundImage: `url('${character?.image}')` }}
               />
-              <div className="flex flex-col w-1/2">
-                <div className="flex space-x-2 items-center px-3 pt-2">
+              <div className="flex flex-col w-1/2 py-3 pl-1">
+                <div className="flex space-x-2 items-center px-3">
                   <div className="font-bold">Status: </div>
                   <Tag
                     text={character?.status || "Unknown"}
@@ -70,8 +70,16 @@ function Modal({ character, showModal, onClose }: ModalProps): ReactElement {
                   {character?.species || "Unknown"}
                 </div>
                 <div className="px-3 pt-2">
+                  <div className="font-bold">Origin: </div>
+                  {character?.origin.name || "Unknown"}
+                </div>
+                <div className="px-3 pt-2">
                   <div className="font-bold">Gender: </div>
                   {character?.gender || "Unknown"}
+                </div>
+                <div className="px-3 pt-2">
+                  <div className="font-bold">First seen on: </div>
+                  {character?.firstEpisode || "Unknown"}
                 </div>
               </div>
             </div>

@@ -1,23 +1,31 @@
 import { ReactElement, useEffect, useState } from "react";
-import { ICharacter, IRickAndMortyData } from "../models/api.interface";
+import {
+  ICharacter,
+  IEpisodeData,
+  IRickAndMortyData,
+} from "../models/api.interface";
 import CharacterCard from "./CharacterCard";
 import { Modal, Pagination } from "./common";
 
 type ContentProps = {
-  content: IRickAndMortyData | undefined;
+  characters: IRickAndMortyData | undefined;
+  episodes?: IEpisodeData | undefined;
   currentPage?: number;
   handlePageChange: (direction: string) => void;
 } & typeof defaultProps;
 
 const defaultProps = {
   currentPage: 1,
+  episodes: {},
 };
 
 function Content({
-  content,
+  characters,
+  episodes,
   currentPage,
   handlePageChange,
 }: ContentProps): ReactElement {
+  const { info, results } = characters as IRickAndMortyData;
   const [showModal, setShowModal] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState<ICharacter>();
   useEffect(() => {
@@ -27,7 +35,10 @@ function Content({
   }, [selectedCharacter]);
 
   const handleCardSelect = (selectedCard: ICharacter): void => {
-    setSelectedCharacter(selectedCard);
+    setSelectedCharacter({
+      ...selectedCard,
+      firstEpisode: episodes[selectedCard.episode[0]]?.name,
+    } as ICharacter);
   };
 
   return (
@@ -36,8 +47,8 @@ function Content({
         style={{ height: "calc(100vh - 270px)" }}
         className="w-full bg-gray-50 shadow-inner overflow-y-scroll justify-center rounded-md p-5 md:p-7 lg:p-10"
       >
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5">
-          {content?.results?.map(character => (
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
+          {results?.map(character => (
             <CharacterCard
               key={character.id}
               onSelect={handleCardSelect}
@@ -55,7 +66,7 @@ function Content({
         />
       </div>
       <Pagination
-        total={content?.info?.count || 0}
+        total={info?.count || 0}
         pageSize={20}
         currentPage={currentPage}
         onPageChange={handlePageChange}

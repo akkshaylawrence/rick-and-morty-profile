@@ -13,7 +13,10 @@ function Filter({
   currentFilter,
 }: FilterBarProps): ReactElement {
   return (
-    <div className="flex items-center justify-end p-2 bg-gray-50 border rounded-md mb-3">
+    <div className="flex items-center p-2 bg-gray-50 border rounded-md mb-3">
+      <span className="flex-grow px-3">
+        Click on the cards to see more details!
+      </span>
       <div className="flex items-center space-x-2 px-3">
         <span className="font-bold text-gray-800">Status: </span>
         <Dropdown

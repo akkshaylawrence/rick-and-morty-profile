@@ -5,6 +5,8 @@ import {
   ICharacter,
   IRickAndMortyData,
   IFilter,
+  IEpisode,
+  IEpisodeData,
 } from "../models/api.interface";
 
 const getFilterApiUrl = (filter: IFilter): string => {
@@ -12,12 +14,41 @@ const getFilterApiUrl = (filter: IFilter): string => {
   return `character/?${query}`;
 };
 
+const getEpisodesFilterQuery = (ids: Array<string>): string =>
+  `episode/[${ids.join(",")}]`;
+
+const removeLink = (link: string): string => link.replace(/^\D+/g, "");
+
 const getAllCharacters = async (
   filter: IFilter
 ): Promise<IRickAndMortyData | undefined> => {
   try {
     const response = await http.get(getFilterApiUrl(filter));
-    return response.data;
+    const { info, results } = response.data;
+    return {
+      info,
+      results: results.map((character: ICharacter) => ({
+        ...character,
+        episode: character.episode.map(removeLink),
+      })),
+    };
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  }
+};
+
+const getAllEpisodes = async (
+  ids: Array<string>
+): Promise<IEpisodeData | undefined> => {
+  try {
+    const response = await http.get(getEpisodesFilterQuery(ids));
+    return response.data.reduce((acc: IEpisodeData, episode: IEpisode) => {
+      return {
+        ...acc,
+        [episode.id]: episode,
+      };
+    }, {});
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
@@ -34,4 +65,4 @@ const getACharacter = async (id: number): Promise<ICharacter | undefined> => {
   }
 };
 
-export default { getAllCharacters, getACharacter };
+export default { getAllCharacters, getACharacter, getAllEpisodes };

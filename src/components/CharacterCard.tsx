@@ -15,7 +15,7 @@ function CharacterCard({
   return (
     <div
       onClick={() => onSelect(character)}
-      className="rounded-md overflow-hidden shadow-md bg-white border-2 hover:border-green-700 cursor-pointer"
+      className="rounded-md overflow-hidden shadow-md bg-white border-2 hover:border-green-700 cursor-pointer select-none"
       role="button"
     >
       <div
