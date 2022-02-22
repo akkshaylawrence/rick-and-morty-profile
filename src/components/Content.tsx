@@ -35,9 +35,10 @@ function Content({
   }, [selectedCharacter]);
 
   const handleCardSelect = (selectedCard: ICharacter): void => {
+    const firstEpisode = episodes[selectedCard.episode[0]];
     setSelectedCharacter({
       ...selectedCard,
-      firstEpisode: episodes[selectedCard.episode[0]]?.name,
+      firstEpisode: `${firstEpisode.episode} - ${firstEpisode.name}`,
     } as ICharacter);
   };
 
