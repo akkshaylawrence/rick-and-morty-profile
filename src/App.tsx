@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ReactElement, useCallback, useEffect, useState } from "react";
 import RickAndMortyApi from "./services/api.service";
 import {
@@ -35,8 +36,7 @@ function App(): ReactElement {
     );
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => getAllCharacters(), [searchFilter]);
+  useEffect(() => getAllCharacters(), []);
 
   useEffect(() => {
     const episodes = characterData?.results.map(
@@ -45,7 +45,6 @@ function App(): ReactElement {
     if (episodes) {
       getEpisodesForCharacter(episodes);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [characterData]);
 
   const handlePageChange = (direction: string): void => {
@@ -69,14 +68,12 @@ function App(): ReactElement {
           currentFilter={searchFilter}
         />
       </div>
-      {characterData && (
-        <Content
-          characters={characterData}
-          episodes={episodeData}
-          currentPage={searchFilter.page}
-          handlePageChange={handlePageChange}
-        />
-      )}
+      <Content
+        characters={characterData}
+        episodes={episodeData}
+        currentPage={searchFilter.page}
+        handlePageChange={handlePageChange}
+      />
     </div>
   );
 }

@@ -6,9 +6,10 @@ import {
 } from "../models/api.interface";
 import CharacterCard from "./CharacterCard";
 import { Modal, Pagination } from "./common";
+import EmptyState from "./common/EmptyState";
 
 type ContentProps = {
-  characters: IRickAndMortyData | undefined;
+  characters?: IRickAndMortyData | undefined;
   episodes?: IEpisodeData | undefined;
   currentPage?: number;
   handlePageChange: (direction: string) => void;
@@ -17,6 +18,7 @@ type ContentProps = {
 const defaultProps = {
   currentPage: 1,
   episodes: {},
+  characters: {},
 };
 
 function Content({
@@ -48,15 +50,22 @@ function Content({
         style={{ height: "calc(100vh - 270px)" }}
         className="w-full bg-gray-50 shadow-inner overflow-y-scroll justify-center rounded-md p-5 md:p-7 lg:p-10"
       >
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
-          {results?.map(character => (
-            <CharacterCard
-              key={character.id}
-              onSelect={handleCardSelect}
-              character={character}
-            />
-          ))}
-        </div>
+        {results ? (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
+            {results?.map(character => (
+              <CharacterCard
+                key={character.id}
+                onSelect={handleCardSelect}
+                character={character}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <EmptyState />
+          </div>
+        )}
+
         <Modal
           character={selectedCharacter}
           showModal={showModal}
