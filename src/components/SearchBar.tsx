@@ -10,6 +10,7 @@ function SearchBar({ handleFilterChange }: SearchBarProps): ReactElement {
   const onSearchQueryChage = (event: ChangeEvent<HTMLInputElement>): void => {
     handleFilterChange({
       name: event.target.value,
+      page: 1,
     });
   };
 
